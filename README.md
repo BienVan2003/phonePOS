@@ -10,7 +10,7 @@
 # Setup
 
 ## Clone dự án về:
-       git clone https://gitlab.duthu.net/S52100540/phonestore.git
+       git clone https://github.com/BienVan2003/phonePOS.git
 ## Vào thư mục dự án và cài đặt dependencies:
        npm install
 ## Khởi động ứng dụng:
