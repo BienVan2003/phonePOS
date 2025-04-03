@@ -1,0 +1,231 @@
+[{
+  "_id": {
+    "$oid": "6564063602c77cb5def47e45"
+  },
+  "name": "Quản trị viên",
+  "email": "admin@gmail.com",
+  "username": "admin",
+  "password": "$2b$10$w0dkBVvQ6HgRdSRpaSZV3.FaF50UhyYbrQL4/AKZsAVtJNT1xQAIK",
+  "role": "admin",
+  "status": "active",
+  "isChangePassword": true,
+  "tokenWithExpiration": "22d7d20c2dfb9078fb063b2808d6d348-1701054066047",
+  "__v": 0,
+  "image": "user.png"
+},
+{
+  "_id": {
+    "$oid": "65757c7271e71e1cb4078122"
+  },
+  "name": "Đặng Ngọc Sang",
+  "email": "dangngocsang@gmail.com",
+  "username": "dangngocsang",
+  "password": "$2b$10$HsbMfbRNzxxpMn2Xl12a.OM8EE7Mhl8zSndnTqt2boeEDvenxnqZi",
+  "role": "staff",
+  "status": "active",
+  "image": "user.png",
+  "phoneNumber": "Chưa cập nhật",
+  "facebookUrl": "#",
+  "instagramUrl": "#",
+  "isChangePassword": true,
+  "tokenWithExpiration": "08a24c37f0304afe98da926688606fa5-1702198446885",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575b9038f302bd7e2fc0e4e"
+  },
+  "name": "VIỆT NAM",
+  "email": "ngoisao2310@gmail.com",
+  "username": "ngoisao2310",
+  "password": "$2b$10$bu4XJwxYyHng2TqOVsMfHuc595x8Jv1WQK9StorFPluOkjaqg0oBK",
+  "role": "staff",
+  "status": "pending",
+  "image": "user.png",
+  "phoneNumber": "Chưa cập nhật",
+  "facebookUrl": "#",
+  "instagramUrl": "#",
+  "isChangePassword": false,
+  "tokenWithExpiration": "9b92452cee626e7687e31692c656b56d-1702213951771",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575bdd93e953cf3ef728620"
+  },
+  "name": "Trà Ngân",
+  "email": "trangan@gmail.com",
+  "username": "trangan",
+  "password": "$2b$10$PeAfepY2q5SKLQVD4WC3QOk0IGUcklVJjOUQv8clByf7Urn.1g5h.",
+  "role": "staff",
+  "status": "pending",
+  "image": "user.png",
+  "phoneNumber": "Chưa cập nhật",
+  "facebookUrl": "#",
+  "instagramUrl": "#",
+  "isChangePassword": false,
+  "tokenWithExpiration": "ed9f0aa2a10ebeeb6fedf8a5729fbffd-1702215189002",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575bdf63e953cf3ef728627"
+  },
+  "name": "Văn Biên",
+  "email": "nvb221003@gmail.com",
+  "username": "nvb221003",
+  "password": "$2b$10$6WW82TFSqv8s0ndmnxb32uqVzsw9tpRGFeZE9iGpB0iFUG5IlcY22",
+  "role": "staff",
+  "status": "active",
+  "image": "user.png",
+  "phoneNumber": "Chưa cập nhật",
+  "facebookUrl": "#",
+  "instagramUrl": "#",
+  "isChangePassword": true,
+  "tokenWithExpiration": "f684b4ef0266ea5b135cbf80df0933f0-1702215218240",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575be2f3e953cf3ef728634"
+  },
+  "name": "Cẩm Ly",
+  "email": "camly@gmail.com",
+  "username": "camly",
+  "password": "$2b$10$msuWDfz7MJMBiu3qVwIcYefBWfKYs4e8PMWicJhqVIbtiD6I78he2",
+  "role": "staff",
+  "status": "pending",
+  "image": "user.png",
+  "phoneNumber": "Chưa cập nhật",
+  "facebookUrl": "#",
+  "instagramUrl": "#",
+  "isChangePassword": false,
+  "tokenWithExpiration": "74c3c7fe8f30727583dcda32c72b8115-1702215275170",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575bee1851ce12b2926d1b7"
+  },
+  "name": "Mỹ Anh",
+  "email": "myanh@gmail.com",
+  "username": "myanh",
+  "password": "$2b$10$HsbMfbRNzxxpMn2Xl12a.OM8EE7Mhl8zSndnTqt2boeEDvenxnqZi",
+  "role": "staff",
+  "status": "active",
+  "image": "user.png",
+  "phoneNumber": "Chưa cập nhật",
+  "facebookUrl": "#",
+  "instagramUrl": "#",
+  "isChangePassword": true,
+  "tokenWithExpiration": "08a24c37f0304afe98da926688606fa5-1702198446885",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575bee1851ce12b2926d1b8"
+  },
+  "name": "Thanh Sơn",
+  "email": "thanhson@gmail.com",
+  "username": "thanhson",
+  "password": "$2b$10$HsbMfbRNzxxpMn2Xl12a.OM8EE7Mhl8zSndnTqt2boeEDvenxnqZi",
+  "role": "staff",
+  "status": "active",
+  "image": "user.png",
+  "phoneNumber": "Chưa cập nhật",
+  "facebookUrl": "#",
+  "instagramUrl": "#",
+  "isChangePassword": true,
+  "tokenWithExpiration": "08a24c37f0304afe98da926688606fa5-1702198446885",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575bee1851ce12b2926d1b9"
+  },
+  "name": "Phúc Long",
+  "email": "phuclong@gmail.com",
+  "username": "phuclong",
+  "password": "$2b$10$HsbMfbRNzxxpMn2Xl12a.OM8EE7Mhl8zSndnTqt2boeEDvenxnqZi",
+  "role": "staff",
+  "status": "active",
+  "image": "user.png",
+  "phoneNumber": "Chưa cập nhật",
+  "facebookUrl": "#",
+  "instagramUrl": "#",
+  "isChangePassword": true,
+  "tokenWithExpiration": "08a24c37f0304afe98da926688606fa5-1702198446885",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575bee1851ce12b2926d1ba"
+  },
+  "name": "Đặng Huy",
+  "email": "danghuy@gmail.com",
+  "username": "danghuy",
+  "password": "$2b$10$HsbMfbRNzxxpMn2Xl12a.OM8EE7Mhl8zSndnTqt2boeEDvenxnqZi",
+  "role": "staff",
+  "status": "active",
+  "image": "user.png",
+  "phoneNumber": "Chưa cập nhật",
+  "facebookUrl": "#",
+  "instagramUrl": "#",
+  "isChangePassword": true,
+  "tokenWithExpiration": "08a24c37f0304afe98da926688606fa5-1702198446885",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575bee1851ce12b2926d1bb"
+  },
+  "name": "Thuyền An",
+  "email": "thuyenan@gmail.com",
+  "username": "thuyenan",
+  "password": "$2b$10$HsbMfbRNzxxpMn2Xl12a.OM8EE7Mhl8zSndnTqt2boeEDvenxnqZi",
+  "role": "staff",
+  "status": "active",
+  "image": "user.png",
+  "phoneNumber": "Chưa cập nhật",
+  "facebookUrl": "#",
+  "instagramUrl": "#",
+  "isChangePassword": true,
+  "tokenWithExpiration": "08a24c37f0304afe98da926688606fa5-1702198446885",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575bee1851ce12b2926d1bc"
+  },
+  "name": "Minh Mẫn",
+  "email": "minhman@gmail.com",
+  "username": "minhman",
+  "password": "$2b$10$HsbMfbRNzxxpMn2Xl12a.OM8EE7Mhl8zSndnTqt2boeEDvenxnqZi",
+  "role": "staff",
+  "status": "active",
+  "image": "user.png",
+  "phoneNumber": "Chưa cập nhật",
+  "facebookUrl": "#",
+  "instagramUrl": "#",
+  "isChangePassword": true,
+  "tokenWithExpiration": "08a24c37f0304afe98da926688606fa5-1702198446885",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575bee1851ce12b2926d1bd"
+  },
+  "name": "Ninh Anh",
+  "email": "ninhanh@gmail.com",
+  "username": "ninhanh",
+  "password": "$2b$10$HsbMfbRNzxxpMn2Xl12a.OM8EE7Mhl8zSndnTqt2boeEDvenxnqZi",
+  "role": "staff",
+  "status": "active",
+  "image": "user.png",
+  "phoneNumber": "Chưa cập nhật",
+  "facebookUrl": "#",
+  "instagramUrl": "#",
+  "isChangePassword": true,
+  "tokenWithExpiration": "08a24c37f0304afe98da926688606fa5-1702198446885",
+  "__v": 0
+}]

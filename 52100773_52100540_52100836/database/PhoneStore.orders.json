@@ -1,0 +1,701 @@
+[{
+  "_id": {
+    "$oid": "65753338919c632aa216b7ae"
+  },
+  "totalAmount": 3030000,
+  "products": [
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f806"
+      },
+      "quantity": 1,
+      "total": 3030000,
+      "_id": {
+        "$oid": "65753338919c632aa216b7af"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "655984ff581c4a6d7743f697"
+  },
+  "seller": {
+    "$oid": "65757c7271e71e1cb4078122"
+  },
+  "payment": {
+    "paidAmount": 3100000,
+    "changeAmount": 70000
+  },
+  "createdDate": {
+    "$date": "2023-11-10T03:40:40.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65753358919c632aa216b7ba"
+  },
+  "totalAmount": 6200000,
+  "products": [
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f80e"
+      },
+      "quantity": 1,
+      "total": 2790000,
+      "_id": {
+        "$oid": "65753358919c632aa216b7bb"
+      }
+    },
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f811"
+      },
+      "quantity": 1,
+      "total": 3410000,
+      "_id": {
+        "$oid": "65753358919c632aa216b7bc"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "65598548581c4a6d7743f6a3"
+  },
+  "seller": {
+    "$oid": "65757c7271e71e1cb4078122"
+  },
+  "payment": {
+    "paidAmount": 6500000,
+    "changeAmount": 300000
+  },
+  "createdDate": {
+    "$date": "2023-10-10T03:41:12.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65753366919c632aa216b7c9"
+  },
+  "totalAmount": 32990000,
+  "products": [
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f801"
+      },
+      "quantity": 1,
+      "total": 32990000,
+      "_id": {
+        "$oid": "65753366919c632aa216b7ca"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "6571490b617fb52cf29959d1"
+  },
+  "seller": {
+    "$oid": "65757c7271e71e1cb4078122"
+  },
+  "payment": {
+    "paidAmount": 33000000,
+    "changeAmount": 10000
+  },
+  "createdDate": {
+    "$date": "2023-12-03T03:41:26.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575337c919c632aa216b7da"
+  },
+  "totalAmount": 5000,
+  "products": [
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f839"
+      },
+      "quantity": 1,
+      "total": 5000,
+      "_id": {
+        "$oid": "6575337c919c632aa216b7db"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "655cbdb7b175b24ed50dc0f9"
+  },
+  "seller": {
+    "$oid": "65757c7271e71e1cb4078122"
+  },
+  "payment": {
+    "paidAmount": 5000,
+    "changeAmount": 0
+  },
+  "createdDate": {
+    "$date": "2023-12-05T03:41:48.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "657533b9919c632aa216b7f0"
+  },
+  "totalAmount": 8568000,
+  "products": [
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f809"
+      },
+      "quantity": 1,
+      "total": 588000,
+      "_id": {
+        "$oid": "657533b9919c632aa216b7f1"
+      }
+    },
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f831"
+      },
+      "quantity": 2,
+      "total": 7980000,
+      "_id": {
+        "$oid": "657533b9919c632aa216b7f2"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "65714a42b7a563a756200e08"
+  },
+  "seller": {
+    "$oid": "65757c7271e71e1cb4078122"
+  },
+  "payment": {
+    "paidAmount": 9000000,
+    "changeAmount": 432000
+  },
+  "createdDate": {
+    "$date": "2023-12-09T03:42:49.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575b9af8f302bd7e2fc0e74"
+  },
+  "totalAmount": 8180000,
+  "products": [
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f813"
+      },
+      "quantity": 2,
+      "total": 8180000,
+      "_id": {
+        "$oid": "6575b9af8f302bd7e2fc0e75"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "655cbdb7b175b24ed50dc0f9"
+  },
+  "seller": {
+    "$oid": "6564063602c77cb5def47e45"
+  },
+  "payment": {
+    "paidAmount": 9000000,
+    "changeAmount": 820000
+  },
+  "createdDate": {
+    "$date": "2023-12-09T13:14:23.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575b9d18f302bd7e2fc0e7e"
+  },
+  "totalAmount": 33280000,
+  "products": [
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f7ff"
+      },
+      "quantity": 1,
+      "total": 29990000,
+      "_id": {
+        "$oid": "6575b9d18f302bd7e2fc0e7f"
+      }
+    },
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f800"
+      },
+      "quantity": 1,
+      "total": 3290000,
+      "_id": {
+        "$oid": "6575b9d18f302bd7e2fc0e80"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "6571490b617fb52cf29959d1"
+  },
+  "seller": {
+    "$oid": "6564063602c77cb5def47e45"
+  },
+  "payment": {
+    "paidAmount": 40000000,
+    "changeAmount": 6720000
+  },
+  "createdDate": {
+    "$date": "2023-12-06T13:14:57.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575b9e88f302bd7e2fc0e91"
+  },
+  "totalAmount": 8110000,
+  "products": [
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f806"
+      },
+      "quantity": 1,
+      "total": 3030000,
+      "_id": {
+        "$oid": "6575b9e88f302bd7e2fc0e92"
+      }
+    },
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f808"
+      },
+      "quantity": 1,
+      "total": 990000,
+      "_id": {
+        "$oid": "6575b9e88f302bd7e2fc0e93"
+      }
+    },
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f813"
+      },
+      "quantity": 1,
+      "total": 4090000,
+      "_id": {
+        "$oid": "6575b9e88f302bd7e2fc0e94"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "6572eeed4d66c2802788f437"
+  },
+  "seller": {
+    "$oid": "6564063602c77cb5def47e45"
+  },
+  "payment": {
+    "paidAmount": 8110000,
+    "changeAmount": 0
+  },
+  "createdDate": {
+    "$date": "2023-11-10T13:15:20.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575b9f98f302bd7e2fc0ea1"
+  },
+  "totalAmount": 764000,
+  "products": [
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f862"
+      },
+      "quantity": 1,
+      "total": 290000,
+      "_id": {
+        "$oid": "6575b9f98f302bd7e2fc0ea2"
+      }
+    },
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f854"
+      },
+      "quantity": 1,
+      "total": 239000,
+      "_id": {
+        "$oid": "6575b9f98f302bd7e2fc0ea3"
+      }
+    },
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f849"
+      },
+      "quantity": 1,
+      "total": 235000,
+      "_id": {
+        "$oid": "6575b9f98f302bd7e2fc0ea4"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "6559853c581c4a6d7743f69d"
+  },
+  "seller": {
+    "$oid": "6564063602c77cb5def47e45"
+  },
+  "payment": {
+    "paidAmount": 800000,
+    "changeAmount": 36000
+  },
+  "createdDate": {
+    "$date": "2023-10-11T13:15:37.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575baec0ff984d93c3b98b5"
+  },
+  "totalAmount": 8054000,
+  "products": [
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f862"
+      },
+      "quantity": 1,
+      "total": 290000,
+      "_id": {
+        "$oid": "6575baec0ff984d93c3b98b6"
+      }
+    },
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f854"
+      },
+      "quantity": 1,
+      "total": 239000,
+      "_id": {
+        "$oid": "6575baec0ff984d93c3b98b7"
+      }
+    },
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f849"
+      },
+      "quantity": 1,
+      "total": 235000,
+      "_id": {
+        "$oid": "6575baec0ff984d93c3b98b8"
+      }
+    },
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f843"
+      },
+      "quantity": 1,
+      "total": 480000,
+      "_id": {
+        "$oid": "6575baec0ff984d93c3b98b9"
+      }
+    },
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f828"
+      },
+      "quantity": 1,
+      "total": 3420000,
+      "_id": {
+        "$oid": "6575baec0ff984d93c3b98ba"
+      }
+    },
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f823"
+      },
+      "quantity": 1,
+      "total": 3390000,
+      "_id": {
+        "$oid": "6575baec0ff984d93c3b98bb"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "6573ef0f68a4b94545e95441"
+  },
+  "seller": {
+    "$oid": "6564063602c77cb5def47e45"
+  },
+  "payment": {
+    "paidAmount": 9000000,
+    "changeAmount": 946000
+  },
+  "createdDate": {
+    "$date": "2023-12-06T13:19:40.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575bb8e3e953cf3ef7284f7"
+  },
+  "totalAmount": 3030000,
+  "products": [
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f806"
+      },
+      "quantity": 1,
+      "total": 3030000,
+      "_id": {
+        "$oid": "6575bb8e3e953cf3ef7284f8"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "655984ff581c4a6d7743f697"
+  },
+  "seller": {
+    "$oid": "6564063602c77cb5def47e45"
+  },
+  "payment": {
+    "paidAmount": 4000000,
+    "changeAmount": 970000
+  },
+  "createdDate": {
+    "$date": "2023-12-05T13:22:22.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575c01e3e953cf3ef728730"
+  },
+  "totalAmount": 30129000,
+  "products": [
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f7ff"
+      },
+      "quantity": 1,
+      "total": 29990000,
+      "_id": {
+        "$oid": "6575c01e3e953cf3ef728731"
+      }
+    },
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f85f"
+      },
+      "quantity": 1,
+      "total": 139000,
+      "_id": {
+        "$oid": "6575c01e3e953cf3ef728732"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "6573ef0f68a4b94545e95441"
+  },
+  "seller": {
+    "$oid": "6575bdf63e953cf3ef728627"
+  },
+  "payment": {
+    "paidAmount": 31000000,
+    "changeAmount": 871000
+  },
+  "createdDate": {
+    "$date": "2023-12-04T13:41:50.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575c03e3e953cf3ef72873c"
+  },
+  "totalAmount": 149000,
+  "products": [
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f840"
+      },
+      "quantity": 1,
+      "total": 149000,
+      "_id": {
+        "$oid": "6575c03e3e953cf3ef72873d"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "6573ef0f68a4b94545e95441"
+  },
+  "seller": {
+    "$oid": "6575bdf63e953cf3ef728627"
+  },
+  "payment": {
+    "paidAmount": 150000,
+    "changeAmount": 1000
+  },
+  "createdDate": {
+    "$date": "2023-12-03T13:42:22.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575c04e3e953cf3ef728748"
+  },
+  "totalAmount": 239000,
+  "products": [
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f854"
+      },
+      "quantity": 1,
+      "total": 239000,
+      "_id": {
+        "$oid": "6575c04e3e953cf3ef728749"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "6559853c581c4a6d7743f69d"
+  },
+  "seller": {
+    "$oid": "6575bdf63e953cf3ef728627"
+  },
+  "payment": {
+    "paidAmount": 240000,
+    "changeAmount": 1000
+  },
+  "createdDate": {
+    "$date": "2023-12-02T13:42:38.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575c06a3e953cf3ef728756"
+  },
+  "totalAmount": 6900000,
+  "products": [
+    {
+      "product": {
+        "$oid": "657577e1d0f0c9a8ea67f81f"
+      },
+      "quantity": 2,
+      "total": 6900000,
+      "_id": {
+        "$oid": "6575c06a3e953cf3ef728757"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "65714d5a61267db42cd39556"
+  },
+  "seller": {
+    "$oid": "6575bdf63e953cf3ef728627"
+  },
+  "payment": {
+    "paidAmount": 7000000,
+    "changeAmount": 100000
+  },
+  "createdDate": {
+    "$date": "2023-12-01T13:43:06.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575cbee165b52d1e6e20334"
+  },
+  "totalAmount": 355000,
+  "products": [
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f833"
+      },
+      "quantity": 1,
+      "total": 115000,
+      "_id": {
+        "$oid": "6575cbee165b52d1e6e20335"
+      }
+    },
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f837"
+      },
+      "quantity": 1,
+      "total": 240000,
+      "_id": {
+        "$oid": "6575cbee165b52d1e6e20336"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "655b985a9d0a68f060215350"
+  },
+  "seller": {
+    "$oid": "6564063602c77cb5def47e45"
+  },
+  "payment": {
+    "paidAmount": 400000,
+    "changeAmount": 45000
+  },
+  "createdDate": {
+    "$date": "2023-12-10T14:32:14.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6575cc0b165b52d1e6e2033f"
+  },
+  "totalAmount": 1182000,
+  "products": [
+    {
+      "product": {
+        "$oid": "65757927d0f0c9a8ea67f838"
+      },
+      "quantity": 2,
+      "total": 1182000,
+      "_id": {
+        "$oid": "6575cc0b165b52d1e6e20340"
+      }
+    }
+  ],
+  "customer": {
+    "$oid": "6571490b617fb52cf29959d1"
+  },
+  "seller": {
+    "$oid": "6564063602c77cb5def47e45"
+  },
+  "payment": {
+    "paidAmount": 1200000,
+    "changeAmount": 18000
+  },
+  "createdDate": {
+    "$date": "2023-12-10T14:32:43.000Z"
+  },
+  "isDeleted": false,
+  "__v": 0
+}]

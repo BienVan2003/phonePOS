@@ -1,0 +1,156 @@
+<link rel="stylesheet" href="/css/mytable/table.css">
+
+
+<div class="table-wrapper">
+    <section class="mt-8 ml-10 grid gap-4 grid-cols-3">
+        <div>
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="text" name="name" id="name" value="{{customer.name}}"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="name"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    Lịch sử mua hàng của:</label>
+            </div>
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="text" name="email" id="email" value="{{customer.email}}"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="email"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    Địa chỉ email:</label>
+            </div>
+
+        </div>
+        <div>
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="text" name="phone" id="phone" value="{{customer.phone}}"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="phone"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    Số điện thoại: </label>
+            </div>
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="text" name="address" id="address" value="{{customer.address}}"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="address"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 eer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    Địa chỉ:</label>
+            </div>
+        </div>
+        <div>
+            <button type="button" id="btn-save-info" data-id="{{customer._id}}"
+                class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none ">Lưu
+                thông tin</button>
+
+        </div>
+    </section>
+
+    <section class="table__body">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã đơn</th>
+                    <th>Ngày mua</th>
+                    <th>Tiền khách đưa</th>
+                    <th>Tiền khách thừa</th>
+                    <th>Tổng tiền</th>
+                </tr>
+            </thead>
+            <tbody id="content">
+                {{#each orders}}
+                <tr>
+                    <td>{{sum @index 1}}</td>
+                    <td><a class="font-medium text-blue-600 hover:underline" href="/admin/invoice/{{_id}}">{{_id}}</a>
+                    </td>
+                    <td>{{formatDate createdDate}}</td>
+                    <td>{{formatPrice payment.paidAmount}}</td>
+                    <td>{{formatPrice payment.changeAmount}}</td>
+                    <td>{{formatPrice totalAmount}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </section>
+</div>
+<div class="flex flex-wrap">
+    <div class="w-full sm:w-full md:w-5/12">
+    </div>
+    <div class="w-full sm:w-full md:w-7/12">
+        <nav class="p-3 border-0 bd-example">
+            <ul class="inline-flex -space-x-px text-sm" id="pagination">
+                <!-- Your pagination content here -->
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        pushBreadcrumb('Khách hàng', '/admin/customer-management');
+        pushBreadcrumb('Chi tiết khách hàng', '#');
+
+    });
+</script>
+<script>
+    $(document).ready(function () {
+
+        // Bắt sự kiện click cho các nút Xóa
+        $(document).on('click', '#btn-save-info', function () {
+            let btn = $(this);
+            // Lấy giá trị của các thuộc tính dữ liệu
+            let id = btn.data('id'); // Truy cập vào thuộc tính data-id
+            let name = $('#name').val()
+            let email = $('#email').val()
+            let phone = $('#phone').val()
+            let address = $('#address').val()
+            let customer = {
+                _id: id,
+                name,
+                email,
+                phone,
+                address
+            }
+            $.ajax({
+                type: "PUT",
+                url: `/api/customer/${id}`,
+                data: customer,
+                success: function (data) {
+                    if (data.status === true) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: data.message,
+                            showConfirmButton: true,
+                            allowOutsideClick: false, // Prevent closing by clicking outside the modal
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                // Reload the page when the user clicks "OK"
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: data.message,
+                            showConfirmButton: true,
+                            allowOutsideClick: false, // Prevent closing by clicking outside the modal
+                        })
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log(status)
+                    Swal.fire({
+                        icon: 'warning',
+                        title: status,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            });
+        });
+
+    });
+</script>

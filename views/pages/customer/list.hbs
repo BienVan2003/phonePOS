@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="/css/mytable/table.css">
+
+
+<div class="table-wrapper">
+    <section class="table__header grid gap-4 grid-cols-3">
+        <div class="my-search">
+            <div class="hoverable relative m-4" style="width: 400px;">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input type="text" id="search-input" placeholder="Tìm kiếm khách hàng"
+                    class="w-full block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <div class="products hoverable" id="productList">
+            </div>
+        </div>
+    </section>
+    <section class="table__body">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="content">
+            </tbody>
+        </table>
+    </section>
+</div>
+<div class="flex flex-wrap">
+    <div class="w-full sm:w-full md:w-5/12">
+    </div>
+    <div class="w-full sm:w-full md:w-7/12">
+        <nav class="p-3 border-0 bd-example">
+            <ul class="inline-flex -space-x-px text-sm" id="pagination">
+                <!-- Your pagination content here -->
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        pushBreadcrumb('Khách hàng', '#');
+        popBreadcrumbUntil('Khách hàng');
+    });
+</script>
+<script src="/js/customer/main.js"></script>

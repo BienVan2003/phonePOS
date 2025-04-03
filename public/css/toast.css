@@ -1,0 +1,19 @@
+
+#toast-message {
+    position: fixed;
+    top: 72px;
+    right: 32px;
+    z-index: 9999999999;
+    animation: toast-message .3s ease-in-out;
+}
+
+@keyframes toast-message {
+    from {
+        opacity: 0;
+        transform: translateX(calc(100% + 32px));
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

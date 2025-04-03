@@ -1,0 +1,146 @@
+<div class="bg-white">
+    <div class="w-[1100px] box-border mx-auto min-h-screen mb-5">
+        <div class="h-[308px] bg-cover bg-center rounded-b-2xl relative bg-[url('/img/bg-blog.webp')]">
+            <div class="absolute -bottom-[calc(50%-166px/2)] left-10 flex justify-center gap-4">
+                <div class="p-2 rounded-full bg-white">
+                    <img class="w-[150px] h-[150px] rounded-full" src='/uploads/{{user.image}}' alt='' />
+                </div>
+                <div class="mt-auto font-bold text-[28px] mb-4">
+                    {{user.name}}
+                </div>
+            </div>
+        </div>
+        <div class="mt-[90px] px-6 grid grid-cols-5 gap-6">
+            <div class="col-span-2">
+                <div class="border-[1px] border-gray-200 border-opacity-70 p-4 shadow-md rounded-md">
+                    <h3 class="font-semibold text-base">Giới thiệu</h3>
+                    <div class="">
+                        <ul class="mt-2 list-inside">
+                            <li class="text-sm">
+                                <i class="fa-solid fa-user-group"></i>
+                                <span class="ml-2 text-black">
+                                    <span id="user-role">Quản trị viên</span> của<strong> Phone Store.</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6 border-[1px] border-gray-200 border-opacity-70 p-4 shadow-md rounded-md">
+                    <h3 class="font-semibold text-base">Thông tin liên hệ</h3>
+                    <div class="">
+                        <ul class="mt-2 list-inside">
+                            <li class="text-sm">
+                                <a class="py-2" href="{{#if user.facebookUrl}}{{user.facebookUrl}}{{else}}#{{/if}}">
+                                    <i class="fa-brands fa-facebook text-xl text-blue-500"></i>
+                                    <span class="ml-2 text-black hover:underline"> Di chuyển đến trang Facebook của
+                                        <strong>{{user.name}}</strong>.
+                                </a>
+                            </li>
+                            <li class="text-sm mt-2">
+                                <a class="py-2" href="{{#if user.instagramUrl}}{{user.instagramUrl}}{{else}}#{{/if}}">
+                                    <i class="fa-brands fa-instagram text-xl text-red-500"></i>
+                                    <span class="ml-2 text-black hover:underline"> Di chuyển đến trang Instagram của
+                                        <strong>{{user.name}}</strong>.
+                                </a>
+                            </li>
+                            <li class="text-sm mt-2">
+                                <div class="py2">
+                                    <i class="fa-solid fa-phone"></i>
+                                    <span class="ml-2 text-black"> Liên hệ:
+                                        <strong>{{#if user.phoneNumber}}{{user.phoneNumber}}{{else}}Chưa cập
+                                            nhật{{/if}}</strong>.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-3">
+                <div class="border-[1px] border-gray-200 border-opacity-70 p-4 shadow-md rounded-md">
+                    <h3 class="font-semibold text-base">Hoạt động gần đây</h3>
+                    <div class="mt-3">
+                        <ul id="container-order" class="mt-3 list-inside">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div onclick="handleNavigateBack()"
+    class="fixed top-4 left-8 cursor-pointer py-[6px] px-3 group text-sm font-semibold text-gray-500 hover:text-black">
+    <i class="fa-solid fa-arrow-left group-hover:-translate-x-4 transition-all"></i>
+    <span class="ml-1">Quay lại</span>
+</div>
+<div>
+    <a href="/auth/info/edit"
+        class="fixed top-4 right-8 cursor-pointer py-[6px] px-3 group text-sm font-semibold text-gray-500 hover:text-black">
+        <i class="fa-solid fa-gear text-2xl"></i>
+    </a>
+</div>
+<script>
+    const userRoleAPI = '{{user.role}}'
+    async function fetchOrderByUserId(userId) {
+        try {
+            const response = await fetch(`/api/order/user/${userId}`);
+
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} - ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
+
+
+    async function renderOrdersOfUser() {
+        const currentUrl = window.location.href;
+
+        const url = new URL(currentUrl);
+
+        const id = url.pathname.split('/').pop();
+
+        const result = await fetchOrderByUserId(id);
+        if (result.status === true) {
+            // console.log(result.data)
+            if (result.data.length > 0) {
+                let htmlBody = result.data.map((order, index) => {
+                    return (`
+                        <li class="text-sm flex mt-6">
+                                <div class="">
+                                    <img class="w-[40px] h-[40px] max-w-[40px] max-h-[40px] border-[3px] border-r-red-500 border-t-yellow-500 border-b-red-500 border-l-red-500 rounded-full"
+                                            alt="/color.jpg"
+                                            src="/uploads/{{user.image}}" />
+                                    </div>
+                                    <div class="ml-2 text-black">
+                                    <div class="">
+                                            <b>{{user.name}}</b>
+                                        <a href="/admin/invoice/${order._id}" class="inline font-normal cursor-pointer hover:underline">
+                                            đã tạo hóa đơn <b>${order._id}</b> cho khách hàng <b>${order.customer.name}</b
+                                        </a>
+                                    </div >
+                                </div >
+                        </li >
+                        `)
+                }).join('');
+                containerOrder.innerHTML = htmlBody;
+            }
+            else {
+                containerOrder.innerHTML = (`
+                <div class="text-center text-orange-600 mb-4">Bạn chưa có hoạt động nào gần đây. 😁
+                                </div>
+                `);
+            }
+        }
+    }
+
+
+
+    renderOrdersOfUser();
+</script>
+<script src="/js/user/info.js"></script>

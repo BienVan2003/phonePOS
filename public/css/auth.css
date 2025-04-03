@@ -1,0 +1,54 @@
+body {
+    background: url('/img/backgroundinfo.jpg') center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.user-info-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-image {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.user-details h2 {
+    color: #343a40;
+}
+
+.user-details p {
+    color: #6c757d;
+}
+
+.user-status {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.status-text {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.status-online {
+    background-color: #28a745; /* green for online */
+    color: #ffffff;
+}
+
+.status-offline {
+    background-color: #dc3545; /* red for offline */
+    color: #ffffff;
+}

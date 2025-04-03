@@ -1,0 +1,138 @@
+{{!-- sidebar open --}}
+<div id="sidebar-lg" class="min-h-screen w-[250px] bg-cyan-50 transition-all">
+    <div class="h-[50px]">
+
+    </div>
+    <div class="flex flex-col item-center">
+        <input id="options-selected" type="text" value="{{option}}" hidden>
+
+        <a id="options-sell" href="/admin/transaction"
+            class="relative py-3 pl-5 cursor-pointer border-t-[1px] border-dashed border-cyan-500 hover:bg-cyan-500 hover:text-white">
+            <div class="flex items-center gap-x-4">
+                <i class="w-4 fa-solid fa-shop"></i>
+                <span class="text-sm">Bán hàng</span>
+            </div>
+        </a>
+        <a id="options-product" href="/admin/product-management"
+            class="relative py-3 pl-5 cursor-pointer border-t-[1px] border-dashed border-cyan-500 hover:bg-cyan-500 hover:text-white">
+            <div class="flex items-center gap-x-4">
+
+                <i class="w-4 fa-solid fa-mobile"></i>
+                <span class="text-sm">Sản phẩm</span>
+            </div>
+        </a>
+        <a id="options-customer" href="/admin/customer-management"
+            class="relative py-3 pl-5 cursor-pointer border-t-[1px] border-dashed border-cyan-500 hover:bg-cyan-500 hover:text-white">
+            <div class="flex items-center gap-x-4">
+
+                <i class="w-4 fa-solid fa-users"></i>
+                <span class="text-sm">Khách hàng</span>
+            </div>
+        </a>
+        <a id="options-account" href="/admin/account-management"
+            class="relative py-3 pl-5 cursor-pointer border-t-[1px] border-dashed border-cyan-500 hover:bg-cyan-500 hover:text-white">
+            <div class="flex items-center gap-x-4">
+
+                <i class="w-4 fa-solid fa-user-plus"></i>
+                <span class="text-sm">Tài khoản</span>
+            </div>
+        </a>
+        {{#if (eq user.role "admin")}}
+        <a id="options-statistical" href="/admin/report"
+            class="relative py-3 pl-5 cursor-pointer border-t-[1px] border-dashed border-cyan-500 hover:bg-cyan-500 hover:text-white border-b-[1px]">
+            <div class="flex items-center gap-x-4">
+                <i class="w-4 fa-solid fa-chart-simple"></i>
+                <span class="text-sm">Thống kê</span>
+            </div>
+        </a>
+        {{/if}}
+    </div>
+</div>
+
+{{!-- sidebar close --}}
+<div id="sidebar-sm" class="hidden min-h-screen w-[56px] bg-cyan-50 transition-all">
+    <div class="h-[50px]">
+
+    </div>
+    <div class="flex flex-col item-center">
+        <input id="options-selected" type="text" value="{{option}}" hidden>
+
+        <a id="options-sell" href="/admin/transaction"
+            class="relative group py-3 cursor-pointer border-t-[1px] border-dashed border-cyan-500 hover:bg-cyan-500 hover:text-white">
+            <div class="flex justify-center items-center gap-x-4">
+                <i class="w-4 fa-solid fa-shop"></i>
+                <span
+                    class="z-50 text-sm -right-[194px] group-hover:flex w-[194px] hidden absolute h-full pl-4 items-center bg-cyan-500">Bán
+                    hàng</span>
+            </div>
+        </a>
+        <a id="options-product" href="/admin/product-management"
+            class="relative group py-3 cursor-pointer border-t-[1px] border-dashed border-cyan-500 hover:bg-cyan-500 hover:text-white">
+            <div class="flex justify-center items-center gap-x-4">
+
+                <i class="w-4 fa-solid fa-mobile"></i>
+                <span
+                    class="z-50 text-sm -right-[194px] group-hover:flex w-[194px] hidden absolute h-full pl-4 items-center bg-cyan-500">Sản
+                    phẩm</span>
+            </div>
+        </a>
+        <a id="options-customer" href="/admin/customer-management"
+            class="relative group py-3 cursor-pointer border-t-[1px] border-dashed border-cyan-500 hover:bg-cyan-500 hover:text-white">
+            <div class="flex justify-center items-center gap-x-4">
+
+                <i class="w-4 fa-solid fa-users"></i>
+                <span
+                    class="z-50 text-sm -right-[194px] group-hover:flex w-[194px] hidden absolute h-full pl-4 items-center bg-cyan-500">Khách
+                    hàng</span>
+            </div>
+        </a>
+        <a id="options-account" href="/admin/account-management"
+            class="relative group py-3 cursor-pointer border-t-[1px] border-dashed border-cyan-500 hover:bg-cyan-500 hover:text-white">
+            <div class="flex justify-center items-center gap-x-4">
+
+                <i class="w-4 fa-solid fa-user-plus"></i>
+                <span
+                    class="z-50 text-sm -right-[194px] group-hover:flex w-[194px] hidden absolute h-full pl-4 items-center bg-cyan-500">Tài
+                    khoản</span>
+            </div>
+        </a>
+        {{#if (eq user.role "admin")}}
+        <a id="options-statistical" href="/admin/report"
+            class="relative group py-3 cursor-pointer border-t-[1px] border-dashed border-cyan-500 hover:bg-cyan-500 hover:text-white border-b-[1px]">
+            <div class="flex justify-center items-center gap-x-4">
+                <i class="w-4 fa-solid fa-chart-simple"></i>
+                <span
+                    class="z-50 text-sm -right-[194px] group-hover:flex w-[194px] hidden absolute h-full pl-4 items-center bg-cyan-500">Thống
+                    kê</span>
+            </div>
+        </a>
+        {{/if}}
+    </div>
+</div>
+<script>
+    const optionsSelected = document.querySelector('#options-selected').value;
+    const optionsSell = document.querySelector('#options-sell');
+    const optionsBill = document.querySelector('#options-bill');
+    const optionsProduct = document.querySelector('#options-product');
+    const optionsCustomer = document.querySelector('#options-customer');
+    const optionsAccount = document.querySelector('#options-account');
+    const optionsStatistical = document.querySelector('#options-statistical');
+
+    if (+optionsSelected === 1) {
+        optionsSell.classList.add('bg-cyan-500', 'text-white');
+    } else if (+optionsSelected === 2) {
+        optionsBill.classList.add('bg-cyan-500', 'text-white');
+    }
+    else if (+optionsSelected === 3) {
+        optionsProduct.classList.add('bg-cyan-500', 'text-white');
+    }
+    else if (+optionsSelected === 4) {
+        optionsCustomer.classList.add('bg-cyan-500', 'text-white');
+    }
+    else if (+optionsSelected === 5) {
+        optionsAccount.classList.add('bg-cyan-500', 'text-white');
+    }
+    else if (+optionsSelected === 6) {
+        optionsStatistical.classList.add('bg-cyan-500', 'text-white');
+    }
+</script>

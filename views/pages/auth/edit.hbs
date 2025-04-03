@@ -1,0 +1,718 @@
+<div class="bg-white min-h-screen">
+        <div class="mx-[120px] grid grid-cols-7 gap-20 mt-[90px]">
+                <div class="col-span-2 h-fit sticky top-[90px]">
+                        <h1 class="text-[30px] font-semibold">Cài đặt</h1>
+                        <ul class="list-inside mt-5 text-base">
+                                <li id="options-user-info" onclick="handleOpenInfoAccount()"
+                                        class="flex items-center py-3 px-3 mb-1 rounded-lg bg-gray-300 bg-opacity-50 cursor-pointer hover:bg-gray-300 hover:bg-opacity-50">
+                                        <i class="fa-solid fa-user text-xl text-gray-500"></i>
+                                        <div class="ml-3 font-semibold">Cài đặt tài khoản</div>
+                                </li>
+                                <li id="options-user-security" onclick="handleOpenSecurity()"
+                                        class="flex items-center py-3 px-3 mb-1 rounded-lg bg-opacity-50 cursor-pointer hover:bg-gray-300 hover:bg-opacity-50">
+                                        <i class="fa-solid fa-shield-halved text-xl text-gray-500"></i>
+                                        <div class="ml-3 font-semibold">Bảo mật</div>
+                                </li>
+                        </ul>
+                </div>
+                <div id="container-info" class="col-span-5 pr-[100px] mb-10 overflow-y-auto">
+
+                </div>
+        </div>
+
+</div>
+
+<div onclick="handleNavigateBack()"
+        class="fixed top-4 left-6 cursor-pointer py-[6px] px-3 group text-sm font-semibold text-gray-500">
+        <i class="fa-solid fa-arrow-left group-hover:-translate-x-4 transition-all"></i>
+        <span class="ml-1 group-hover:text-gray-800">Quay lại</span>
+</div>
+
+<script>
+
+        const handleNavigateBack = () => {
+                window.history.back();
+        }
+
+        let isOpenSettingInfo = true;
+        const containerInfo = document.querySelector('#container-info');
+        const optionsUserInfo = document.querySelector('#options-user-info')
+        const optionsUserSecurity = document.querySelector('#options-user-security')
+
+        getUserByJWT();
+
+        function render(data) {
+                containerInfo.innerHTML = '';
+                if (isOpenSettingInfo) {
+                        renderSettingAccoutPage(data);
+                }
+                else {
+                        renderSecurityPage(data);
+                }
+        }
+
+        function handleOpenInfoAccount() {
+                isOpenSettingInfo = true;
+                if (!optionsUserInfo.classList.contains('bg-gray-300')) {
+                        optionsUserInfo.classList.add('bg-gray-300');
+                }
+                if (optionsUserSecurity.classList.contains('bg-gray-300')) {
+                        optionsUserSecurity.classList.remove('bg-gray-300');
+                }
+                getUserByJWT();
+        }
+
+        function handleOpenSecurity() {
+                isOpenSettingInfo = false;
+                if (optionsUserInfo.classList.contains('bg-gray-300')) {
+                        optionsUserInfo.classList.remove('bg-gray-300');
+                }
+                if (!optionsUserSecurity.classList.contains('bg-gray-300')) {
+                        optionsUserSecurity.classList.add('bg-gray-300');
+                }
+                getUserByJWT();
+        }
+
+
+        //handle
+        async function handleSetUserFullName(data) {
+                if (!data) {
+                        return 'Vui lòng nhập tên';
+                } else if (data.length === 1) {
+                        return 'Tên phải dài hơn 1 ký tự';
+                } else {
+                        let res = await myFetchData('/api/user/edit/name', { name: data })
+                        if (res.status === true) {
+                                showToast('success', res.message);
+                        }
+                        else {
+                                showToast('danger', res.message);
+                        }
+                        return undefined;
+                }
+        };
+
+        async function handleSetUserAvatar(data) {
+                if (!data) {
+                        return 'Không được để trống ảnh đại diện';
+                }
+
+                try {
+                        const formData = new FormData();
+                        formData.append('image', data);
+
+                        const response = await fetch('/api/user/edit/avatar', {
+                                method: 'POST',
+                                body: formData,
+                        });
+
+                        const result = await response.json();
+
+                        if (result.status === true) {
+                                showToast('success', result.message);
+                        } else {
+                                showToast('danger', result.message);
+                        }
+
+                        return undefined;
+                } catch (error) {
+                        showToast('danger', 'Error during fetch ' + error.message);
+                        return undefined;
+                }
+        }
+
+        function handleSetUserEmail(data) {
+                if (!data) {
+                        return 'Không được để trống địa chỉ email';
+                } else if (!isValidEmail(data)) {
+                        return 'Địa chỉ email không hợp lệ';
+                } else {
+                        return undefined;
+                }
+        };
+
+        function handleSetUserUsername(data) {
+                if (!data) {
+                        return 'Không được để trống tên người dùng';
+                } else if (!isValidUsername(data)) {
+                        return 'Tên người dùng không hợp lệ';
+                } else {
+                        return undefined;
+                }
+        };
+
+        async function handleSetUserPhone(data) {
+                if (!data) {
+                        return 'Không được để trống số điện thoại';
+                } else if (!isValidPhoneNumber(data)) {
+                        return 'Số điện thoại không hợp lệ';
+                } else {
+                        let res = await myFetchData('/api/user/edit/phone', { phoneNumber: data })
+                        if (res.status === true) {
+                                showToast('success', res.message);
+                        }
+                        else {
+                                showToast('danger', res.message);
+                        }
+                        return undefined;
+                }
+        };
+
+        async function handleSetUserFacebook(data) {
+                if (!data) {
+                        return 'Vui lòng nhập đường dẫn đến Facebook của bạn';
+                } else if (!isValidFacebookUrl(data)) {
+                        return 'Đường dẫn không hợp lệ';
+                } else {
+                        let res = await myFetchData('/api/user/edit/facebook', { facebookUrl: data })
+                        if (res.status === true) {
+                                showToast('success', res.message);
+                        }
+                        else {
+                                showToast('danger', res.message);
+                        }
+                        return undefined;
+                }
+        };
+
+        async function handleSetUserInstagram(data) {
+                if (!data) {
+                        return 'Vui lòng nhập đường dẫn đến Instagram của bạn';
+                } else if (!isValidInstagramUrl(data)) {
+                        return 'Đường dẫn không hợp lệ';
+                } else {
+                        let res = await myFetchData('/api/user/edit/instagram', { instagramUrl: data })
+                        if (res.status === true) {
+                                showToast('success', res.message);
+                        }
+                        else {
+                                showToast('danger', res.message);
+                        }
+                        return undefined;
+                }
+        };
+
+        function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+        };
+
+        function isValidUsername(username) {
+                return username.length >= 5 && !username.includes(' ');
+        };
+
+        function isValidPhoneNumber(phone) {
+                const phoneRegex = /^\d{10}$/;
+                return phoneRegex.test(phone);
+        };
+
+        function isValidFacebookUrl(url) {
+                const facebookUrlRegex = /^(https?:\/\/)?(www\.)?facebook\.com\/[a-zA-Z0-9._-]+\/?$/;
+
+                return facebookUrlRegex.test(url);
+        }
+
+        function isValidInstagramUrl(url) {
+                const instagramUrlRegex = /^(https?:\/\/)?(www\.)?instagram\.com\/[a-zA-Z0-9._-]+\/?$/;
+
+                return instagramUrlRegex.test(url);
+        }
+
+        function handleSetAccountInfo() {
+                const userImage = document.getElementById('userImage');
+                const importAvatarElement = document.getElementById('import-avatar');
+                const fileInput = document.getElementById('fileInput');
+                const inputFullname = document.getElementById('input-fullname');
+                const inputEmail = document.getElementById('input-email');
+                const inputUsername = document.getElementById('input-username');
+                const inputPhone = document.getElementById('input-phone');
+
+
+
+                const optionsBtnUserFullName = document.querySelectorAll('#options-user-fullname button');
+                const optionsBtnUserAvatar = document.querySelectorAll('#options-user-avatar button');
+                const optionsBtnUserEmail = document.querySelectorAll('#options-user-email button');
+                const optionsBtnUserUsername = document.querySelectorAll('#options-user-username button');
+                const optionsBtnUserPhone = document.querySelectorAll('#options-user-phone button');
+
+                const listOptions = [optionsBtnUserFullName, optionsBtnUserAvatar, optionsBtnUserEmail, optionsBtnUserUsername, optionsBtnUserPhone];
+                const handleImportFileImg = () => {
+                        fileInput.click();
+                }
+
+                const listHandleSetUserInfo = [handleSetUserFullName, handleSetUserAvatar, handleSetUserEmail, handleSetUserUsername, handleSetUserPhone];
+
+                fileInput.addEventListener('change', function () {
+                        if (fileInput.files && fileInput.files[0]) {
+                                const reader = new FileReader();
+
+                                reader.onload = function (e) {
+                                        userImage.src = e.target.result;
+                                };
+
+                                reader.readAsDataURL(fileInput.files[0]);
+                        }
+                });
+
+                listOptions.forEach((options, index) => {
+
+                        const parentElement = options[0].parentElement.parentElement;
+                        const inputElement = parentElement.querySelector('input');
+                        const errorElement = parentElement.querySelector('.field-error');
+                        let inputValueBeforeChange = inputElement.value;
+                        if (index === 1) {
+                                inputValueBeforeChange = userImage.getAttribute('src');;
+                        }
+
+                        options[0].addEventListener('click', () => {
+                                options[0].classList.add('hidden');
+
+                                options[1].classList.remove('hidden');
+                                options[2].classList.remove('hidden');
+
+                                inputElement.disabled = false;
+                                if (inputElement.type === 'text') {
+                                        inputElement.focus();
+                                        inputElement.setSelectionRange(inputElement.value.length, inputElement.value.length);
+                                }
+                                else if (inputElement.type === 'number') {
+                                        inputElement.focus();
+                                }
+
+                                if (index === 1) {
+                                        importAvatarElement.classList.remove('hidden');
+                                        importAvatarElement.addEventListener('click', handleImportFileImg);
+                                }
+
+                        });
+
+                        options[2].addEventListener('click', () => {
+                                if (inputElement.classList.contains('border-red-500')) {
+                                        inputElement.classList.remove('border-red-500');
+                                }
+                                if (index === 1) {
+                                        importAvatarElement.classList.add('hidden');
+                                        importAvatarElement.removeEventListener('click', handleImportFileImg);
+                                        userImage.src = inputValueBeforeChange;
+                                }
+                                else {
+                                        inputElement.value = inputValueBeforeChange;
+                                }
+                                errorElement.textContent = '';
+                                options[0].classList.remove('hidden');
+
+                                options[1].classList.add('hidden');
+                                options[2].classList.add('hidden');
+
+                                inputElement.disabled = true;
+                        });
+                        options[1].addEventListener('click', async () => {
+                                let inputValue = inputElement.value;
+                                if (index === 1) {
+                                        if (inputElement.files && inputElement.files[0]) {
+                                                inputValue = inputElement.files[0];
+                                        }
+                                }
+                                const result = await listHandleSetUserInfo[index](inputValue);
+                                if (result !== undefined) {
+
+                                        inputElement.classList.add('border-red-500');
+                                        inputElement.focus();
+                                        errorElement.textContent = result;
+                                }
+                                else {
+                                        if (index === 1) {
+                                                importAvatarElement.classList.add('hidden');
+
+                                                importAvatarElement.removeEventListener('click', handleImportFileImg);
+                                        }
+                                        options[0].classList.remove('hidden');
+
+                                        options[1].classList.add('hidden');
+                                        options[2].classList.add('hidden');
+
+                                        inputElement.disabled = true;
+                                }
+
+
+                        });
+
+                        inputElement.addEventListener('keydown', () => {
+                                if (inputElement.classList.contains('border-red-500')) {
+                                        inputElement.classList.remove('border-red-500');
+                                }
+                                errorElement.textContent = '';
+                        })
+                })
+
+                userImage.addEventListener('click', () => optionsBtnUserAvatar[0].click())
+        }
+
+        function handleSetSecurityInfo() {
+                const inputFacebook = document.getElementById('input-facebook');
+                const inputInstagram = document.getElementById('input-instagram');
+
+                const optionsBtnUserFacebook = document.querySelectorAll('#options-user-facebook button');
+                const optionsBtnUserInstagram = document.querySelectorAll('#options-user-instagram button');
+
+                const listOptions = [optionsBtnUserFacebook, optionsBtnUserInstagram];
+
+                const listHandleSetSecurityInfo = [handleSetUserFacebook, handleSetUserInstagram];
+
+
+                listOptions.forEach((options, index) => {
+
+                        const parentElement = options[0].parentElement.parentElement;
+                        const inputElement = parentElement.querySelector('input');
+                        const errorElement = parentElement.querySelector('.field-error');
+                        let inputValueBeforeChange = inputElement.value;
+
+                        options[0].addEventListener('click', () => {
+                                options[0].classList.add('hidden');
+
+                                options[1].classList.remove('hidden');
+                                options[2].classList.remove('hidden');
+
+                                inputElement.disabled = false;
+                                if (inputElement.type === 'text') {
+                                        inputElement.focus();
+                                        inputElement.setSelectionRange(inputElement.value.length, inputElement.value.length);
+                                }
+
+                        });
+
+                        options[2].addEventListener('click', () => {
+                                if (inputElement.classList.contains('border-red-500')) {
+                                        inputElement.classList.remove('border-red-500');
+                                }
+
+                                inputElement.value = inputValueBeforeChange;
+                                errorElement.textContent = '';
+                                options[0].classList.remove('hidden');
+
+                                options[1].classList.add('hidden');
+                                options[2].classList.add('hidden');
+
+                                inputElement.disabled = true;
+                        });
+                        options[1].addEventListener('click', async () => {
+                                let inputValue = inputElement.value;
+
+                                const result = await listHandleSetSecurityInfo[index](inputValue);
+                                if (result !== undefined) {
+
+                                        inputElement.classList.add('border-red-500');
+                                        inputElement.focus();
+                                        errorElement.textContent = result;
+                                }
+                                else {
+                                        options[0].classList.remove('hidden');
+
+                                        options[1].classList.add('hidden');
+                                        options[2].classList.add('hidden');
+
+                                        inputElement.disabled = true;
+                                }
+
+
+                        });
+
+                        inputElement.addEventListener('keydown', () => {
+                                if (inputElement.classList.contains('border-red-500')) {
+                                        inputElement.classList.remove('border-red-500');
+                                }
+                                errorElement.textContent = '';
+                        })
+                })
+
+        }
+
+        function renderSettingAccoutPage(data) {
+
+                let htmlData = `
+                        <div class="mt-12">
+                                <h2 class="text-[22px] font-semibold mb-2">Thông tin cá nhân</h2>
+                                <hr>
+                                <div class="flex mt-8">
+                                        <div class="flex-1">
+                                                <div class="max-w-[500px] w-full">
+                                                        <h3 class="text-base font-semibold">Họ tên</h3>
+                                                        <div class="mt-4 text-sm">
+                                                                <input id="input-fullname" type="text" value="${data.name}"
+                                                                        class="pt-[1px] px-[2px] pb-2 border-b-[1px] w-full outline-none disabled:bg-white"
+                                                                        disabled>
+                                                                <p class="text-xs text-red-500 mt-2 field-error"></p>
+                                                                <p class="text-gray-500 mt-6 mb-4">Tên của bạn xuất hiện
+                                                                        trên
+                                                                        trang cá nhân và bên cạnh
+                                                                        các bình luận của bạn.</p>
+                                                        </div>
+                                                </div>
+
+                                        </div>
+                                        <div id="options-user-fullname" class="group transition-all">
+                                                <button
+                                                        class="px-4 border-[1px] border-gray-300 hover:border-gray-700 transition-all text-sm rounded-full text-gray-500 py-[6px]">
+                                                        Chỉnh sửa
+                                                </button>
+                                                <button
+                                                        class="hidden px-4 border-[1px] border-red-500 transition-all text-sm rounded-full text-red-500 py-[6px]">
+                                                        Lưu
+                                                </button>
+                                                <button
+                                                        class="hidden px-4 ml-1 border-[1px] border-gray-300 hover:border-gray-700 transition-all text-sm rounded-full text-gray-500 py-[6px]">
+                                                        Hủy
+                                                </button>
+                                        </div>
+                                </div>
+
+                                <div class="flex mt-8">
+                                        <div class="flex-1 flex">
+                                                <div class="max-w-[500px] w-full">
+                                                        <h3 class="text-base font-semibold">Avatar</h3>
+                                                        <div class="mt-4 text-sm">
+                                                                <div class="">Nên là ảnh vuông, chấp nhận các tệp: JPG,
+                                                                        PNG hoặc GIF.</div>
+                                                                <p class="text-xs text-red-500 mt-2 field-error"></p>
+                                                                <p class="text-gray-500 mt-6"></p>
+                                                        </div>
+                                                </div>
+                                                <div class="mr-auto mt-10">
+                                                        <div class="relative">
+                                                                <img id="userImage" src="/${data.image ? `uploads/${data.image}` : 'img/user.png'}" alt=""
+                                                                        class="h-20 w-20 rounded-full border-[1px] cursor-pointer">
+
+                                                                <div id="import-avatar"
+                                                                        class="absolute hidden top-0 left-0 right-0 bottom-0 text-gray-500 h-20 w-20 rounded-full cursor-pointer flex justify-center items-center">
+                                                                        <i class="fa-solid fa-camera text-4xl"></i>
+                                                                </div>
+                                                        </div>
+                                                        <input id="fileInput" type="file" accept="image"
+                                                                class="h-20 w-20 rounded-full border-none cursor-pointer"
+                                                                hidden>
+
+                                                </div>
+                                        </div>
+                                        <div id="options-user-avatar" class="group transition-all">
+                                                <button
+                                                        class="px-4 border-[1px] border-gray-300 hover:border-gray-700 transition-all text-sm rounded-full text-gray-500 py-[6px]">
+                                                        Chỉnh sửa
+                                                </button>
+                                                <button
+                                                        class="hidden px-4 border-[1px] border-red-500 transition-all text-sm rounded-full text-red-500 py-[6px]">
+                                                        Lưu
+                                                </button>
+                                                <button
+                                                        class="hidden px-4 ml-1 border-[1px] border-gray-300 hover:border-gray-700 transition-all text-sm rounded-full text-gray-500 py-[6px]">
+                                                        Hủy
+                                                </button>
+                                        </div>
+                                </div>
+
+                                <div class="flex mt-8">
+                                        <div class="flex-1">
+                                                <div class="max-w-[500px] w-full">
+                                                        <h3 class="text-base font-semibold">Email</h3>
+                                                        <div class="mt-4 text-sm">
+                                                                <input id="input-email" type="text"
+                                                                        value="${data.email}"
+                                                                        class="pt-[1px] px-[2px] pb-2 border-b-[1px] w-full outline-none disabled:bg-white"
+                                                                        disabled>
+                                                                <p class="text-xs text-red-500 mt-2 field-error"></p>
+                                                                <p class="text-gray-500 mt-6 mb-4"></p>
+                                                        </div>
+                                                </div>
+
+                                        </div>
+                                        <div id="options-user-email" class="hidden group transition-all">
+                                                <button
+                                                        class="px-4 border-[1px] border-gray-300 hover:border-gray-700 transition-all text-sm rounded-full text-gray-500 py-[6px]">
+                                                        Chỉnh sửa
+                                                </button>
+                                                <button
+                                                        class="hidden px-4 border-[1px] border-red-500 transition-all text-sm rounded-full text-red-500 py-[6px]">
+                                                        Lưu
+                                                </button>
+                                                <button
+                                                        class="hidden px-4 ml-1 border-[1px] border-gray-300 hover:border-gray-700 transition-all text-sm rounded-full text-gray-500 py-[6px]">
+                                                        Hủy
+                                                </button>
+                                        </div>
+                                </div>
+                                <div class="flex mt-8">
+                                        <div class="flex-1">
+                                                <div class="max-w-[500px] w-full">
+                                                        <h3 class="text-base font-semibold">User Name</h3>
+                                                        <div class="mt-4 text-sm">
+                                                                <input id="input-username" type="text" value="${data.username}"
+                                                                        class="pt-[1px] px-[2px] pb-2 border-b-[1px] w-full outline-none disabled:bg-white"
+                                                                        disabled>
+                                                                <p class="text-xs text-red-500 mt-2 field-error"></p>
+                                                                <p class="text-gray-500 mt-6 mb-4">Tên tài khoản đăng
+                                                                        nhập</p>
+                                                        </div>
+                                                </div>
+
+                                        </div>
+                                        <div id="options-user-username" class="hidden group transition-all">
+                                                <button
+                                                        class="px-4 border-[1px] border-gray-300 hover:border-gray-700 transition-all text-sm rounded-full text-gray-500 py-[6px]">
+                                                        Chỉnh sửa
+                                                </button>
+                                                <button
+                                                        class="hidden px-4 border-[1px] border-red-500 transition-all text-sm rounded-full text-red-500 py-[6px]">
+                                                        Lưu
+                                                </button>
+                                                <button
+                                                        class="hidden px-4 ml-1 border-[1px] border-gray-300 hover:border-gray-700 transition-all text-sm rounded-full text-gray-500 py-[6px]">
+                                                        Hủy
+                                                </button>
+                                        </div>
+                                </div>
+                                <div class="flex mt-8">
+                                        <div class="flex-1">
+                                                <div class="max-w-[500px] w-full">
+                                                        <h3 class="text-base font-semibold">Số điện thoại</h3>
+                                                        <div class="mt-4 text-sm">
+                                                                <input id="input-phone" type="number" value="${data.phoneNumber ? data.phoneNumber : ''}"
+                                                                        placeholder="Thêm số điện thoại"
+                                                                        class="pt-[1px] px-[2px] pb-2 border-b-[1px] w-full outline-none disabled:bg-white"
+                                                                        disabled>
+                                                                <p class="text-xs text-red-500 mt-2 field-error"></p>
+                                                                <p class="text-gray-500 mt-6 mb-4">Số điện thoại liên hệ</p>
+                                                        </div>
+                                                </div>
+
+                                        </div>
+                                        <div id="options-user-phone" class="group transition-all">
+                                                <button
+                                                        class="px-4 border-[1px] border-gray-300 hover:border-gray-700 transition-all text-sm rounded-full text-gray-500 py-[6px]">
+                                                        Chỉnh sửa
+                                                </button>
+                                                <button
+                                                        class="hidden px-4 border-[1px] border-red-500 transition-all text-sm rounded-full text-red-500 py-[6px]">
+                                                        Lưu
+                                                </button>
+                                                <button
+                                                        class="hidden px-4 ml-1 border-[1px] border-gray-300 hover:border-gray-700 transition-all text-sm rounded-full text-gray-500 py-[6px]">
+                                                        Hủy
+                                                </button>
+                                        </div>
+                                </div>
+                        </div>
+                `;
+
+                containerInfo.innerHTML = htmlData;
+                handleSetAccountInfo();
+        }
+
+        function renderSecurityPage(data) {
+
+                let htmlData = `
+                        <div class="mt-12">
+                                <h2 class="text-[22px] font-semibold mb-2">Mạng xã hội</h2>
+                                <hr>
+                                <div class="flex mt-8">
+                                        <div class="flex-1">
+                                                <div class="max-w-[500px] w-full">
+                                                        <h3 class="text-base font-semibold">Facebook</h3>
+                                                        <div class="mt-4 text-sm">
+                                                                <input id="input-facebook" type="text" value="" placeholder="Eg.https://www.facebook.com/me/"
+                                                                        class="pt-[1px] px-[2px] pb-2 border-b-[1px] w-full outline-none disabled:bg-white"
+                                                                        disabled>
+                                                                <p class="text-xs text-red-500 mt-2 field-error"></p>
+                                                        </div>
+                                                </div>
+
+                                        </div>
+                                        <div id="options-user-facebook" class="group transition-all">
+                                                <button
+                                                        class="px-4 border-[1px] border-gray-300 hover:border-gray-700 transition-all text-sm rounded-full text-gray-500 py-[6px]">
+                                                        Chỉnh sửa
+                                                </button>
+                                                <button
+                                                        class="hidden px-4 border-[1px] border-red-500 transition-all text-sm rounded-full text-red-500 py-[6px]">
+                                                        Lưu
+                                                </button>
+                                                <button
+                                                        class="hidden px-4 ml-1 border-[1px] border-gray-300 hover:border-gray-700 transition-all text-sm rounded-full text-gray-500 py-[6px]">
+                                                        Hủy
+                                                </button>
+                                        </div>
+                                </div>
+
+
+                                <div class="flex mt-8">
+                                        <div class="flex-1">
+                                                <div class="max-w-[500px] w-full">
+                                                        <h3 class="text-base font-semibold">Intagram</h3>
+                                                        <div class="mt-4 text-sm">
+                                                                <input id="input-instagram" type="text" placeholder="Eg.https://www.instagram.com/cuongdai8"
+                                                                        value=""
+                                                                        class="pt-[1px] px-[2px] pb-2 border-b-[1px] w-full outline-none disabled:bg-white"
+                                                                        disabled>
+                                                                <p class="text-xs text-red-500 mt-2 field-error"></p>
+                                                        </div>
+                                                </div>
+
+                                        </div>
+                                        <div id="options-user-instagram" class="group transition-all">
+                                                <button
+                                                        class="px-4 border-[1px] border-gray-300 hover:border-gray-700 transition-all text-sm rounded-full text-gray-500 py-[6px]">
+                                                        Chỉnh sửa
+                                                </button>
+                                                <button
+                                                        class="hidden px-4 border-[1px] border-red-500 transition-all text-sm rounded-full text-red-500 py-[6px]">
+                                                        Lưu
+                                                </button>
+                                                <button
+                                                        class="hidden px-4 ml-1 border-[1px] border-gray-300 hover:border-gray-700 transition-all text-sm rounded-full text-gray-500 py-[6px]">
+                                                        Hủy
+                                                </button>
+                                        </div>
+                                </div>
+                        </div>
+                `;
+
+                containerInfo.innerHTML = htmlData;
+                handleSetSecurityInfo();
+        }
+
+
+        ///Call API
+        function getUserByJWT() {
+                fetch('/api/auth/userjwt', {
+                        method: 'GET',
+                        headers: {
+                                'Content-Type': 'application/json',
+                        }
+                })
+                        .then(res => res.json())
+                        .then(data => {
+                                if (data.status === true) {
+                                        render(data.data);
+                                }
+                        })
+                        .catch(err => console.log(err));
+        }
+
+
+        async function myFetchData(url, data = null) {
+                try {
+                        const response = await fetch(url, {
+                                method: 'POST',
+                                headers: {
+                                        'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(data),
+                        });
+
+                        return await response.json();
+                } catch (error) {
+                        console.error('Lỗi fetch:', error.message);
+                }
+        }
+
+
+
+</script>

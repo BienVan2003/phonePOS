@@ -1,0 +1,70 @@
+<section class="bg-white">
+    <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+        <h2 class="mb-4 text-xl font-bold text-gray-900">Xem thông tin chi tiết sản phẩm</h2>
+        <form action="#">
+            <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                <div class="sm:col-span-2">
+                    <label for="barcode"
+                        class="block mb-2 text-sm font-medium text-gray-900 ">Barcode</label>
+                    <input readonly type="text" name="barcode" id="barcode" value="{{product.barcode}}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                        placeholder="Barcode" required="">
+                </div>
+                <div class="sm:col-span-2">
+                    <label for="productName" class="block mb-2 text-sm font-medium text-gray-900 ">Tên
+                        sản phẩm</label>
+                    <input readonly type="text" name="productName" id="productName" value="{{product.productName}}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                        placeholder="Tên của sản phẩm" required="">
+                </div>
+                {{#if (eq user.role "admin")}}
+                <div>
+                    <label for="importPrice" class="block mb-2 text-sm font-medium text-gray-900 ">Giá
+                        nhập</label>
+                    <input readonly type="number" name="importPrice" id="importPrice" value="{{product.importPrice}}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                        placeholder="$2999" required="">
+                </div>
+                {{/if}}
+                <div>
+                    <label for="retailPrice" class="block mb-2 text-sm font-medium text-gray-900">Giá
+                        bán lẻ</label>
+                    <input readonly type="number" name="retailPrice" id="retailPrice" value="{{product.retailPrice}}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                        placeholder="$2999" required="">
+                </div>
+                <div>
+                    <label for="category"
+                        class="block mb-2 text-sm font-medium text-gray-900">Category</label>
+                    <input readonly type="text" name="category" id="category" value="{{product.category}}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                        required="">
+                </div>
+                <div>
+                    <label for="brand" class="block mb-2 text-sm font-medium text-gray-900">Thương
+                        hiệu</label>
+                    <input readonly type="text" name="brand" id="brand" value="{{product.brand}}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                        required="">
+                </div>
+                <div class="sm:col-span-2">
+                    <label for="createdDate"
+                        class="block mb-2 text-sm font-medium text-gray-900 ">Ngày tạo</label>
+                    <input readonly type="text" name="createdDate" id="createdDate" value="{{formatDate product.createdDate}}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                        required="">
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        pushBreadcrumb('Sản phẩm', '/admin/product-management');
+        pushBreadcrumb('Chi tiết sản phẩm', '#');
+
+    });
+</script>
+
+<script src="/js/product/main.js"></script>

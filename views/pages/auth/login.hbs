@@ -1,0 +1,39 @@
+<div class="container mx-auto flex justify-center items-center min-h-screen">
+    <div class="grid grid-cols-12 w-[1110px] bg-white rounded-xl shadow-2xl">
+        <div class="col-span-5">
+            <div class="bg-[url('/img/logo-login.png')] w-full h-full bg-center bg-cover bg-cyan-600 rounded-l-xl">
+
+            </div>
+        </div>
+        <div class="col-span-7">
+            <div class="px-4">
+                <form action="/auth/login" method="POST"
+                    class="flex flex-col items-center pt-[90px] pr-[90px] pb-[90px] pl-[86px]" id="form-1">
+                    <h3 class="text-3xl text-cyan-600 font-bold uppercase">Xin chào!</h3>
+                    <p class="desc mt-5">Mau mau đăng nhập để quản lý cửa hàng của mình. 💙</p>
+
+                    <div class="spacer"></div>
+
+                    <div class="form-group w-full">
+                        <label for="username" class="form-label font-semibold">Tài khoản</label>
+                        <input id="username" name="username" rules="required" type="text"
+                            placeholder="Nhập tên tài khoản" class="form-control text-sm rounded-lg">
+                        <span class="form-message text-sm"></span>
+                    </div>
+
+                    <div class="form-group w-full">
+                        <label for="password" class="form-label font-semibold">Mật khẩu</label>
+                        <input id="password" name="password" rules="required|min:5" type="password"
+                            placeholder="Nhập mật khẩu" class="form-control text-sm rounded-lg">
+                        <span class="form-message text-sm"></span>
+                    </div>
+
+                    <button class="form-submit w-auto px-8 bg-cyan-500 hover:bg-cyan-600 text-sm">Đăng nhập</button>
+                </form>
+                <script>
+                    var form = new Validator('#form-1');
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="/css/mytable/table.css">
+
+
+<div class="table-wrapper bg-white">
+    <section class="table__header grid gap-4 grid-cols-3">
+        <div class="my-search">
+            <div class="hoverable relative m-4 w-full">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm"  autocomplete="off"
+                    class="w-full block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-cyan-500 focus:border-cyan-500 ">
+            </div>
+            <div class="products hoverable" id="productList">
+            </div>
+        </div>
+        <div>
+            <select id="search-product" class="block w-full p-2 m-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-cyan-500 focus:border-cyan-500 cursor-pointer">
+                <option class="py-[6px] px-3" value="barcode">Theo tên hoặc barcode</option>
+                <option class="py-[6px] px-3" value="category">Theo loại</option>
+                <option class="py-[6px] px-3" value="brand">Theo thương hiệu</option>
+                {{!-- <option value="price">Theo giá</option> --}}
+            </select>
+        </div>
+        {{#if (eq user.role "admin")}}
+        <div class="justify-end flex">
+            <a href="/admin/product-management/add" id="add-product"
+                class="mb-4 mt-4 text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-4 focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2">
+                Thêm sản phẩm
+            </a>
+        </div>
+        {{/if}}
+
+    </section>
+
+    <section class="table__body">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Barcode</th>
+                    <th>Tên Sản Phẩm</th>
+                    {{#if (eq user.role "admin")}}
+                    <th>Giá Nhập</th>
+                    {{/if}}
+                    <th>Giá Bán</th>
+                    <th>Loại</th>
+                    <th>Ngày Tạo</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="content">
+            </tbody>
+        </table>
+    </section>
+</div>
+<div class="flex flex-wrap">
+    <div class="w-full sm:w-full md:w-5/12">
+    </div>
+    <div class="w-full sm:w-full md:w-7/12">
+        <nav class="p-3 border-0 bd-example">
+            <ul class="inline-flex -space-x-px text-sm" id="pagination">
+                <!-- Your pagination content here -->
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        pushBreadcrumb('Sản phẩm', '#');
+        popBreadcrumbUntil('Sản phẩm');
+    });
+</script>
+<script src="/js/product/main.js"></script>

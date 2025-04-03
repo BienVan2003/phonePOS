@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>{{titlePage}}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    {{!-- font-awesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    {{!-- jquery --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    {{!-- Tailwindcss --}}
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    {{!-- Flowbite --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+
+    {{!-- sweetalert2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+        * {
+            font-family: "Inter", sans-serif;
+        }
+    </style>
+
+    <link rel="stylesheet" href="/css/toast.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    {{!--
+    <link rel="stylesheet" href="/css/validator.css"> --}}
+    <script src="/js/validator.js"></script>
+
+</head>
+
+<body>
+    {{!-- Flash message --}}
+
+    <div id="show-toast"></div>
+    {{#if flash}}
+    {{#ifEquals flash.type 'success'}}
+    <div id="toast-message" class="transition-all">
+        <div id="toast-success"
+            class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow "
+            role="alert">
+            <div
+                class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg ">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    viewBox="0 0 20 20">
+                    <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                </svg>
+                <span class="sr-only">Check icon</span>
+            </div>
+            <div class="ms-3 text-sm font-normal">{{flash.message}}</div>
+            <button type="button"
+                class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 "
+                data-dismiss-target="#toast-success" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+            </button>
+        </div>
+    </div>
+    {{else}}
+    <div id="toast-message" class="transition-all">
+        <div id="toast-warning"
+            class="flex items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow"
+            role="alert">
+            <div
+                class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-orange-500 bg-orange-100 rounded-lg ">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    viewBox="0 0 20 20">
+                    <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z" />
+                </svg>
+                <span class="sr-only">Warning icon</span>
+            </div>
+            <div class="ms-3 text-sm font-normal">{{flash.message}}</div>
+            <button type="button"
+                class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 "
+                data-dismiss-target="#toast-warning" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+            </button>
+        </div>
+    </div>
+    {{/ifEquals}}
+    {{/if}}
+
+
+
+    {{> header}}
+    <div class="wrapper flex transition-all">
+        {{> sidebar}}
+        <div class="main flex-1 transition-all">
+            <div class="h-[50px] shadow-md">
+                <div id="breadcrumb"
+                    class="flex justify-start items-center ml-6 text-sm font-normal h-full text-gray-500">
+
+                </div>
+            </div>
+            <main class="content p-6 bg-gray-100 min-h-screen">
+                {{{body}}}
+            </main>
+        </div>
+    </div>
+
+
+    <script>
+        const breadcrumbContainer = document.getElementById('breadcrumb');
+
+        let breadcrumbData = [
+
+        ];
+        let isOpenSidedBar = true;
+
+        setTimeout(() => {
+            const toatMessage = document.getElementById('toast-message');
+            if (toatMessage) {
+                toatMessage.remove();
+            }
+        }, 3000);
+
+        function showToast(type, message) {
+            const showToastElement = document.querySelector('#show-toast');
+            let toastHtml = ``;
+            if (type === 'success') {
+                toastHtml = `
+                    <div id="toast-message" class="transition-all">
+                        <div id="toast-success"
+                            class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow"
+                            role="alert">
+                            <div
+                                class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg">
+                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                </svg>
+                                <span class="sr-only">Check icon</span>
+                            </div>
+                            <div class="ms-3 text-sm font-normal">${message}</div>
+                            <button type="button"
+                                class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 "
+                                data-dismiss-target="#toast-success" aria-label="Close">
+                                <span class="sr-only">Close</span>
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+            else if (type === 'danger'){
+                toastHtml = `
+                    <div id="toast-message" class="transition-all">
+                        <div id="toast-warning"
+                            class="flex items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow"
+                            role="alert">
+                            <div
+                                class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-orange-500 bg-orange-100 rounded-lg">
+                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z" />
+                                </svg>
+                                <span class="sr-only">Warning icon</span>
+                            </div>
+                            <div class="ms-3 text-sm font-normal">${message}</div>
+                            <button type="button"
+                                class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8"
+                                data-dismiss-target="#toast-warning" aria-label="Close">
+                                <span class="sr-only">Close</span>
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+            showToastElement.innerHTML = toastHtml;
+            setTimeout( () => {
+                showToastElement.innerHTML = ``;
+            }, 3000)
+        }
+
+        const btnSIdeBarAction = document.querySelector('#btn-sidebar-action');
+        const headLeft = document.querySelector('#head-left');
+        const sidebarLg = document.querySelector('#sidebar-lg');
+        const sidebarSM = document.querySelector('#sidebar-sm');
+        const headerLogo = document.querySelector('#header-logo');
+
+        btnSIdeBarAction.onclick = () => {
+            if (isOpenSidedBar) {
+                headLeft.classList.remove('w-[250px]');
+                headLeft.classList.add('w-[56px]');
+                sidebarLg.classList.add('hidden');
+                sidebarSM.classList.remove('hidden');
+                headerLogo.classList.add('hidden');
+            }
+            else {
+                headLeft.classList.remove('w-[56px]');
+                headLeft.classList.add('w-[250px]');
+                sidebarSM.classList.add('hidden');
+                sidebarLg.classList.remove('hidden');
+                headerLogo.classList.remove('hidden');
+            }
+            isOpenSidedBar = !isOpenSidedBar;
+        }
+
+        // Function to create breadcrumb
+        function createBreadcrumb() {
+
+            breadcrumbContainer.innerHTML = '';
+
+            breadcrumbData.forEach((item, index) => {
+                const breadcrumbItem = document.createElement('span');
+                breadcrumbItem.textContent = item.label;
+
+                if (index < breadcrumbData.length - 1) {
+                    breadcrumbItem.innerHTML += ' &gt; ';
+                    breadcrumbItem.classList.add('mr-1')
+                }
+
+                if (item.url) {
+                    const link = document.createElement('a');
+                    link.href = item.url;
+                    link.appendChild(breadcrumbItem);
+                    breadcrumbContainer.appendChild(link);
+                } else {
+                    breadcrumbContainer.appendChild(breadcrumbItem);
+                }
+            });
+
+            localStorage.setItem('breadcrumbData', JSON.stringify(breadcrumbData));
+        }
+
+        // Function to push a new breadcrumb item
+        function pushBreadcrumb(label, url) {
+            breadcrumbData.push({ label, url });
+            createBreadcrumb();
+        }
+
+        function popBreadcrumbUntil(label) {
+            let lastItem;
+            do {
+                lastItem = breadcrumbData[breadcrumbData.length - 1];
+                if (lastItem && lastItem.label !== label) {
+                    breadcrumbData.pop();
+                    createBreadcrumb();
+                }
+            } while (lastItem && lastItem.label !== label);
+
+            localStorage.setItem('breadcrumbData', JSON.stringify(breadcrumbData));
+        }
+
+
+        window.addEventListener('load', () => {
+            const storedBreadcrumbData = localStorage.getItem('breadcrumbData');
+            if (storedBreadcrumbData) {
+                breadcrumbData = JSON.parse(storedBreadcrumbData);
+                createBreadcrumb();
+            }
+        })
+
+
+    </script>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+
+</html>

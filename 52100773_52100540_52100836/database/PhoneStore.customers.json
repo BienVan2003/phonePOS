@@ -1,0 +1,154 @@
+[{
+  "_id": {
+    "$oid": "655984ff581c4a6d7743f697"
+  },
+  "name": "Đỗ Văn Hoàng",
+  "email": "dovanhoang@gmail.com",
+  "phone": "0333091234",
+  "address": "Vũng Tàu",
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6559853c581c4a6d7743f69d"
+  },
+  "name": "Nguyễn Văn Biên",
+  "email": "nvb221003@gmail.com",
+  "phone": "0113091697",
+  "address": "Đăk Lăk",
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65598548581c4a6d7743f6a3"
+  },
+  "name": "Trương Ngọc Dũng",
+  "email": "truongngocdung@gmail.com",
+  "phone": "099091999",
+  "address": "123 Đường Lê Lợi, Quận 1, TP.HCM",
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655b907e27a0f0678de0b4c3"
+  },
+  "name": "Nguyen Thi Thuy Dung",
+  "email": "thuydung@gmail.com",
+  "phone": "0987654321",
+  "address": "Cà Mau",
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655b92496c16a103ea1cf2af"
+  },
+  "name": "Nguyễn Trọng Đức",
+  "email": "trongduc@gmail.com",
+  "phone": "0123981123",
+  "address": "Thanh Hóa",
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655b92ed7c3fb056531b8f67"
+  },
+  "name": "Đạo Thanh Hưng",
+  "email": "hungok@gmail.com",
+  "phone": "0123312999",
+  "address": "Ninh Thuận",
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655b985a9d0a68f060215350"
+  },
+  "name": "Nguyễn Duy Ben",
+  "email": "ben@ten.com",
+  "phone": "0471784912",
+  "address": "Cổng 7 Kí Túc Xá ĐH Tôn Đức Thắng",
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655cbdb7b175b24ed50dc0f9"
+  },
+  "name": "Vi Tiểu Bảo",
+  "email": "vitieubao@gmail.com",
+  "phone": "0123131231",
+  "address": "Hà Nội",
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6571490b617fb52cf29959d1"
+  },
+  "name": "Nguyễn Lâm Thành Long",
+  "email": "thanhLog@gmail.com",
+  "phone": "0813340655",
+  "address": "Binh Thuan City",
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65714a42b7a563a756200e08"
+  },
+  "name": "Trần Trung Kiên",
+  "email": "ken@gmail.com",
+  "phone": "01234556789",
+  "address": "ha noi",
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65714a73b7a563a756200e0c"
+  },
+  "name": "Hà Giang",
+  "email": "hagiang@gmail.com",
+  "phone": "0111333222",
+  "address": "Bảo Lộc",
+  "isDeleted": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65714d5a61267db42cd39556"
+  },
+  "name": "Ngô Quang Liêm",
+  "email": "quangliem@di.tu",
+  "phone": "0999123555",
+  "address": "Hà Nam",
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6572eeed4d66c2802788f437"
+  },
+  "name": "Hồ Đặng Tuấn Vũ",
+  "email": "hodangtuanvu@gmail.ocm",
+  "phone": "0123000191",
+  "address": "Thủ Đức",
+  "isDeleted": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6573ef0f68a4b94545e95441"
+  },
+  "name": "Đoàn Thanh Minh",
+  "email": "thanhminh@gmail.com",
+  "phone": "091698421",
+  "address": "Cổng 7 Kí Túc Xá ĐH Tôn Đức Thắng",
+  "isDeleted": false,
+  "__v": 0
+}]

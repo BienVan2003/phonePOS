@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="/css/validator.css">
+<div class="flex justify-center items-center">
+    <div class="flex justify-center items-center">
+        <form action="/admin/account-management/add" method="POST"
+            class="p-12 rounded-md bg-white shadow-md flex flex-col justify-center items-center" id="form-1">
+            <h3 class="text-3xl text-cyan-600 font-bold uppercase text-center">Thêm tài khoản</h3>
+
+            <div class="spacer"></div>
+
+            <div class="form-group">
+                <label for="name" class="form-label font-semibold">Nhập tên</label>
+                <input id="name" name="name" rules="required" type="text" placeholder="Nhập họ tên"
+                    class="form-control">
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label font-semibold">Email</label>
+                <input id="email" name="email" rules="required|email" type="text" placeholder="Nhập email"
+                    class="form-control">
+                <span class="form-message"></span>
+            </div>
+
+            <button class="form-submit bg-cyan-600 hover:bg-cyan-700">Đăng ký</button>
+
+            <div class="mt-5 flex justify-center">
+                <a onclick="popBreadcrumbUntil('Tài khoản')"
+                    class="text-gray-500 text-sm hover:text-cyan-600 hover:underline group transition-all"
+                    href="/admin/account-management">
+                    <i class="fa-solid fa-arrow-left group-hover:-translate-x-3 transition-all"></i>
+                    Trở lại
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    var form = new Validator('#form-1');
+    document.addEventListener("DOMContentLoaded", function () {
+        pushBreadcrumb('Tài khoản', '/admin/account-management');
+        pushBreadcrumb('Thêm tài khoản', '#');
+
+    });
+
+
+</script>
